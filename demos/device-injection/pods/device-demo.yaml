@@ -1,0 +1,75 @@
+#
+# Once this pod is running, you can verify the results by running
+#   kubectl exec -c c0 device-demo -- ls -ls /dev/nri-null
+#   kubectl exec -c c1 device-demo -- ls -ls /dev/nri-zero
+#   kubectl exec -c c2 device-demo -- ls -ls /dev/ | grep nri
+#
+apiVersion: v1
+kind: Pod
+metadata:
+  name: device-demo
+  annotations:
+    devices.nri.io/container.c0: |+
+      - path: /dev/nri-null
+        type: c
+        major: 1
+        minor: 3
+    devices.nri.io/container.c1: |+
+      - path: /dev/nri-zero
+        type: c
+        major: 1
+        minor: 5
+    devices.nri.io/container.c2: |+
+      - path: /dev/nri-null
+        type: c
+        major: 1
+        minor: 3
+      - path: /dev/nri-zero
+        type: c
+        major: 1
+        minor: 5
+spec:
+  containers:
+  - name: c0
+    image: busybox
+    imagePullPolicy: IfNotPresent
+    command:
+      - sh
+      - -c
+      - echo c0 $(sleep inf)
+    resources:
+      requests:
+        cpu: 500m
+        memory: '100M'
+      limits:
+        cpu: 500m
+        memory: '100M'
+  - name: c1
+    image: busybox
+    imagePullPolicy: IfNotPresent
+    command:
+      - sh
+      - -c
+      - echo c1 $(sleep inf)
+    resources:
+      requests:
+        cpu: 1
+        memory: '100M'
+      limits:
+        cpu: 1
+        memory: '100M'
+  - name: c2
+    image: busybox
+    imagePullPolicy: IfNotPresent
+    command:
+      - sh
+      - -c
+      - echo c1 $(sleep inf)
+    resources:
+      requests:
+        cpu: 1
+        memory: '100M'
+      limits:
+        cpu: 1
+        memory: '100M'
+  terminationGracePeriodSeconds: 1
