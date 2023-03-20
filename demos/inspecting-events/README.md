@@ -1,5 +1,8 @@
 ## Inpecting the NRI Protocol
 
+Here is an [asciinema recording](https://asciinema.org/a/568672)
+of this demo.
+
 ### Logger Plugin
 
 You can use the sample logger plugin to take a look at what NRI events
