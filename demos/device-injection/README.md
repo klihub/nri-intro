@@ -1,5 +1,8 @@
 ## Annotated Device Injection
 
+Here is an [asciinema recording](https://asciinema.org/a/568668)
+of this demo.
+
 There occasionally cases where one need a quick hack to overcome
 temporarily but quickly some unforeseen problems. NRI might come
 handy in some of those situation. The device injector NRI plugin
