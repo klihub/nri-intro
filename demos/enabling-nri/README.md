@@ -1,5 +1,10 @@
 # Enabling NRI in the runtime
 
+Here is an [asciinema recording](https://asciinema.org/a/568626)
+of this demo.
+
+<p>
+
 NRI is an experimental feature. It is disabled by default in the runtimes.
 You need to enable NRI in the runtimes configuration before you can use it.
 
@@ -99,3 +104,4 @@ INFO   [2319] Removed container default/test/init-c0-shared...
 INFO   [2320] Removed container default/test/c1-exclusive...
 INFO   [2320] Removed pod default/test...
 ```
+
