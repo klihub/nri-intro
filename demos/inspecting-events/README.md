@@ -1,5 +1,8 @@
 ## Inpecting the NRI Protocol
 
+Here is an [asciinema recording](https://asciinema.org/a/568672)
+of this demo.
+
 ### Logger Plugin
 
 You can use the sample logger plugin to take a look at what NRI events
@@ -8,11 +11,11 @@ and containers. Clone the NRI repository, compile the sample plugins,
 then start the logger plugin.
 
 ```bash
-$ git clone https://github.com/containerd/nri
-$ cd nri
-$ # Note that you need a recent go compiler toolchain installed...
-$ make
-$ ./build/bin/logger -idx 10
+git clone https://github.com/containerd/nri
+cd nri
+# Note that you need a recent go compiler toolchain installed...
+make
+./build/bin/logger -idx 10
 info msg="Created plugin 50-logger (logger, handles RunPodSandbox,StopPodSandbox,RemovePodSandbox,CreateContainer,PostCreateContainer,StartContainer,PostStartContainer,UpdateContainer,PostUpdateContainer,StopContainer,RemoveContainer)"
 info msg="Registering plugin 50-logger..."
 info msg="Configuring plugin 50-logger for runtime containerd/v1.7.0-beta.3-57-g40dfdee84..."
@@ -33,14 +36,14 @@ info msg="Synchronize:        io.kubernetes.pod.name: coredns-787d4
 Now create and remove a pod in another terminal to generate some events...
 
 ```bash
-$ cd nri-intro/demos/inspecting-events
-$ kubectl apply -f pods/test.yaml && sleep 5 && kubectl delete -f pods/test.yaml
+cd nri-intro/demos/inspecting-events
+kubectl apply -f pods/test.yaml && sleep 5 && kubectl delete -f pods/test.yaml
 ```
 
 Now check the logs produced by the logger plugin...
 
 ```bash
-$ # You should see the full pod and container lifecycle events...
+# You should see the full pod and container lifecycle events...
 time="2023-02-15T13:36:57Z" level=info msg="RunPodSandbox: pod:"
 time="2023-02-15T13:36:57Z" level=info msg="RunPodSandbox:    annotations:"
 time="2023-02-15T13:36:57Z" level=info msg="RunPodSandbox:      io.kubernetes.cri.container-type: sandbox"
