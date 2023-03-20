@@ -31,12 +31,12 @@ metadata:
 spec:
   containers:
   - name: c0
-    image: busybox
+    image: quay.io/crio/busybox:latest
     imagePullPolicy: IfNotPresent
     command:
       - sh
       - -c
-      - echo c0 $(sleep inf)
+      - sleep 3600
     resources:
       requests:
         cpu: 500m
@@ -45,12 +45,12 @@ spec:
         cpu: 500m
         memory: '100M'
   - name: c1
-    image: busybox
+    image: quay.io/crio/busybox:latest
     imagePullPolicy: IfNotPresent
     command:
       - sh
       - -c
-      - echo c1 $(sleep inf)
+      - sleep 3600
     resources:
       requests:
         cpu: 1
@@ -59,12 +59,12 @@ spec:
         cpu: 1
         memory: '100M'
   - name: c2
-    image: busybox
+    image: quay.io/crio/busybox:latest
     imagePullPolicy: IfNotPresent
     command:
       - sh
       - -c
-      - echo c1 $(sleep inf)
+      - sleep 3600
     resources:
       requests:
         cpu: 1
